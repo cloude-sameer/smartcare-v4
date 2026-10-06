@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>SmartCare Hospital Suite · One system for every ward</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SmartCare brings appointments, pharmacy, blood bank, laboratory, ambulance dispatch and bed management into one fast, offline-ready hospital dashboard.">
+<meta name="theme-color" content="#0d9488">
+<meta property="og:type" content="website"><meta property="og:title" content="SmartCare Hospital Suite"><meta property="og:description" content="Appointments, pharmacy, blood bank, lab, ambulance and beds in one dashboard."><meta property="og:image" content="assets/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/landing.css"></head>
+<body>
+<header class="nav"><a class="lg" href="#top"><i>+</i>SmartCare</a>
+<input type="checkbox" id="mn" hidden><label for="mn" class="bg" aria-label="Menu">☰</label>
+<nav><a href="#services">Services</a><a href="#how">How it works</a><a href="#emergency">Emergency</a><a class="btn" href="app.html">Open dashboard</a></nav></header>
+<main id="top">
+<section class="hero"><div><span class="pill">🏥 Hospital management, simplified</span>
+<h1>One suite to run every ward, counter and queue.</h1>
+<p>Issue tokens, dispense medicines, track blood units, report lab results and dispatch ambulances, all from one fast dashboard that works on any device, even offline.</p>
+<div class="cta"><a class="btn big" href="app.html">Try the live demo →</a><a class="btn ghost big" href="#services">Explore services</a></div>
+<ul class="trust"><li>✓ No sign-up</li><li>✓ Works offline</li><li>✓ Light &amp; dark mode</li></ul></div>
+<img src="assets/hero.svg" alt="Illustration of a hospital building with an ambulance and blood drop" width="640" height="480"></section>
+<section class="stats"><div><b>8</b><span>integrated modules</span></div><div><b>24/7</b><span>emergency call logging</span></div><div><b>0</b><span>installs or accounts needed</span></div><div><b>1</b><span>dashboard for the whole team</span></div></section>
+<section id="services"><h2>Everything a hospital desk needs</h2><p class="sub">Eight connected modules that share one live view of the hospital.</p>
+<div class="svc" id="svc"></div></section>
+<section id="how" class="alt"><h2>Up and running in three steps</h2>
+<div class="how"><div><i>1</i><b>Open the dashboard</b><span>No installation. It runs in any modern browser.</span></div><div><i>2</i><b>Pick a module</b><span>Use the sidebar to jump to queue, pharmacy, blood bank and more.</span></div><div><i>3</i><b>Act and track</b><span>Every action updates the overview and alert panel instantly.</span></div></div></section>
+<section id="emergency" class="sos"><div><h2>In an emergency, call 112</h2><p>India’s unified emergency number. Hospital staff can log and dispatch ambulance requests by priority in SmartCare.</p></div><a class="btn big light" href="app.html#amb">Open ambulance desk →</a></section>
+</main>
+<footer><div><b>SmartCare Hospital Suite</b><span>Demo project. Data is stored only in your browser.</span></div><div><a href="app.html">Dashboard</a><a href="#services">Services</a><a href="app.html#blood">Blood bank</a></div></footer>
+<script>
+var S=[['queue','Appointments & Queue','Issue tokens and run live doctor queues with wait estimates.'],['beds','Rooms & Beds','See free and occupied beds by ward; admit and discharge in a click.'],['pharm','Pharmacy','Dispense medicines, flag low stock and expired batches.'],['lab','Laboratory','Order tests, collect samples and print signed-off reports.'],['blood','Blood Bank','Stock by group, donor log, requests and NGO help links.'],['amb','Ambulance','Priority-ordered emergency calls and fleet dispatch.'],['fb','Feedback','Collect ratings and comments for every service.'],['dash','Live overview','KPIs, alerts and activity across the whole hospital.']];
+document.getElementById('svc').innerHTML=S.map(function(s){return '<a class="sc" href="app.html#'+s[0]+'"><img src="assets/svc-'+s[0]+'.svg" alt="" width="240" height="140" loading="lazy"><b>'+s[1]+'</b><span>'+s[2]+'</span><em>Open →</em></a>'}).join('');
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(function(){});
+</script></body></html>
