@@ -2,18 +2,17 @@
 <html lang="en"><head><meta charset="utf-8"><title>Dashboard · SmartCare Hospital Suite</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="SmartCare dashboard: appointments, pharmacy, blood bank, lab, ambulance and bed management.">
-<meta name="theme-color" content="#0d9488">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/icon-192.png">
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="css/styles.css"></head>
+<meta name="theme-color" content="#f3f6fa">
+<link rel="icon" href="%BASE_URL%assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="%BASE_URL%assets/icon-192.png">
+<link rel="manifest" href="%BASE_URL%manifest.json">
+<script>
+try {
+ const savedTheme=localStorage.getItem('sc_theme');
+ document.documentElement.dataset.theme=savedTheme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+} catch (_) {}
+</script>
+<link id="route-styles" rel="stylesheet" href="css/styles.css"></head>
 <body><div id="root"></div>
-<script>window.onerror=function(m,s,l){document.getElementById('root').innerHTML='<pre style="padding:20px;color:#b91c1c;white-space:pre-wrap">Error: '+m+'\nFile: '+s+' line '+l+'</pre>'};</script>
-<script src="js/react-bundle.js"></script>
-<script src="js/core.js"></script>
-<script src="js/art.js"></script>
-<script src="js/modules.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/app.js"></script>
-<script>if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(function(){})</script>
+<script type="module" src="./src/main.jsx"></script>
 </body></html>

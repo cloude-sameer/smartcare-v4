@@ -1,25 +1,39 @@
 # SmartCare Hospital Suite
 
-Static website (landing page + React dashboard). No build step, no dependencies.
-
-```
-index.html      landing page         app.html     dashboard (deep links: app.html#blood)
-css/ js/        styles and scripts   assets/      illustrations, icons, social image
-manifest.json + sw.js               installable, works offline (needs https or localhost)
-```
+SmartCare is a React and Tailwind CSS hospital-management demo with client-side routes powered by React Router. Its original hospital dashboard workflows have been moved into the React source and are available alongside the product pages.
 
 ## Run locally
-VS Code → right-click `index.html` → **Open with Live Server** (or `npx serve .`).
 
-## Deploy (pick one)
-- **Netlify:** drag this folder onto app.netlify.com/drop (config in `netlify.toml`).
-- **Vercel:** `npx vercel --prod` (config in `vercel.json`).
-- **GitHub Pages:** push to `main`, then Settings → Pages → Source: *GitHub Actions* (workflow included).
-- **Cloudflare Pages:** connect the repo, build command empty, output directory `/`.
+1. Install Node.js 20 or newer.
+2. Run `npm ci`.
+3. Run `npm run dev` and open the URL printed by Vite.
 
-## After deploying
-1. In `index.html` change `og:image` to the full URL, e.g. `https://your-site.com/assets/og-image.png`.
-2. Bump `smartcare-v4` in `sw.js` whenever you ship changes, so returning visitors refresh their cache.
+Run `npm run build` to compile Tailwind and create the production site in `dist/`. Run `npm run preview` to serve that production build locally.
+
+## Routes
+
+- `/` — Product home
+- `/features` — All eight modules
+- `/modules/queue`, `/modules/beds`, `/modules/pharm`, `/modules/lab`, `/modules/blood`, `/modules/amb`, `/modules/fb`, `/modules/dash` — Individual module details
+- `/platform`, `/about`, `/support` — Product, project and demo information
+- `/dashboard` — Overview
+- `/dashboard/queue`, `/dashboard/beds`, `/dashboard/pharm`, `/dashboard/lab`, `/dashboard/blood`, `/dashboard/amb`, `/dashboard/fb` — Dashboard modules
+
+Legacy dashboard links such as `app.html#blood` redirect to the equivalent dashboard route.
+
+## Deploy
+
+- **Netlify:** connect the repository; its configuration runs `npm run build` and publishes `dist/`.
+- **Vercel:** import the repository and use the included build configuration.
+- **GitHub Pages:** push to `main` and enable GitHub Actions as the Pages source. The workflow builds and deploys `dist/`.
+- **Cloudflare Pages:** use `npm run build` as the build command and `dist` as the output directory.
+
+## Included features
+
+- Eight hospital dashboard modules with direct routes, live overview, and mobile navigation.
+- Light and dark themes, with the preference shared between the landing page and dashboard.
+- Offline-capable static assets and service-worker caching. Direct routes are configured for Netlify and Vercel; GitHub Pages deploys a route fallback page.
 
 ## Important
-Data is saved in each visitor's own browser (localStorage). This is a demo. For real patient data you need a backend, authentication and proper privacy/compliance controls.
+
+Demo data is saved in each visitor's browser using local storage. This is not a production patient-data system. Real patient data requires a secure backend, authentication, access controls, and appropriate privacy and compliance safeguards.

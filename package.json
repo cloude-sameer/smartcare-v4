@@ -1,0 +1,27 @@
+{
+  "name": "smartcare-hospital-suite",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:css": "tailwindcss -i src/styles/dashboard.css -o public/css/styles.css --minify && tailwindcss -i src/styles/landing.css -o public/css/landing.css --minify",
+    "build": "npm run build:css && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "vite": "^6.1.0"
+  },
+  "overrides": {
+    "@parcel/watcher": "^2.6.0"
+  }
+}

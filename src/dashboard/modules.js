@@ -1,6 +1,9 @@
 /* ============================================================
    MODULE: QUEUE
    ============================================================ */
+import { h, id, td, DOC, TESTS, PR, DEPTS, CAN, BG, card, Bd, Tbl, Form, Btn } from './core.js';
+import { BloodHelp } from './art.js';
+
 function Queue({db,set,toast}){
  const t=td(),q=db.queue.filter(x=>x.date===t).sort((a,b)=>a.doc.localeCompare(b.doc)||a.token-b.token);
  const add=v=>{if(v.p.trim().length<2)return toast('Enter patient name'),0;set('queue',a=>[...a,{id:id(),patient:v.p.trim(),doc:v.d,date:t,token:a.filter(x=>x.doc===v.d&&x.date===t).length+1,status:'waiting'}]);toast('Token issued');return 1};
@@ -83,3 +86,4 @@ function FB({db,set,toast}){
   h(Tbl,{cols:[['Patient',r=>r.patient],['Service',r=>r.dept],['Rating',r=>'★'.repeat(r.r)],['Comment',r=>r.c||'–']],rows:db.fb})));
 }
 
+export { Queue, Pharm, Blood, Lab, Amb, Beds, FB };

@@ -1,7 +1,9 @@
 /* ============================================================
    DATA
    ============================================================ */
-const h=React.createElement,{useState,useEffect}=React,K='smartcare_suite_v1',id=()=>Math.random().toString(36).slice(2,8);
+import React, { useState } from 'react';
+
+const h=React.createElement,K='smartcare_suite_v1',id=()=>Math.random().toString(36).slice(2,8);
 const ad=n=>{const d=new Date(Date.now()+n*864e5);return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)},td=()=>ad(0);
 const BG=['A+','A-','B+','B-','AB+','AB-','O+','O-'];
 const CAN={'A+':['A+','A-','O+','O-'],'A-':['A-','O-'],'B+':['B+','B-','O+','O-'],'B-':['B-','O-'],'AB+':BG,'AB-':['AB-','A-','B-','O-'],'O+':['O+','O-'],'O-':['O-']};
@@ -30,3 +32,4 @@ function Form({f,go,btn}){
 }
 const Btn=(l,fn,c,d)=>h('button',{key:l,className:c||'',disabled:d,onClick:fn},l);
 
+export { h, K, id, td, BG, CAN, DOC, TESTS, PR, DEPTS, seed, load, card, Bd, Tbl, Form, Btn };

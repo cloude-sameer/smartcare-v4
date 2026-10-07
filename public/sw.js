@@ -1,4 +1,4 @@
-const C='smartcare-v4',A=['./','index.html','app.html','css/styles.css','css/landing.css','js/react-bundle.js','js/core.js','js/art.js','js/modules.js','js/dashboard.js','js/app.js','assets/hero.svg','assets/favicon.svg'];
+const C='smartcare-v6',A=['./','index.html','app.html','css/styles.css','css/landing.css','assets/hero.svg','assets/favicon.svg','assets/icon-192.png','assets/svc-dash.svg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;

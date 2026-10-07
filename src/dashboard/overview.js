@@ -1,4 +1,6 @@
 /* Overview dashboard */
+import { h, td, BG, DOC, card, Bd } from './core.js';
+
 function Dash({db,go}){
  const t=td(),n=db.fb.length,av=n?(db.fb.reduce((a,x)=>a+x.r,0)/n).toFixed(1):'–';
  const lowM=db.meds.filter(m=>m.stock<20||m.exp<t),lowB=BG.filter(g=>db.blood[g]<3),pend=db.breq.filter(r=>r.status==='pending'),sos=db.calls.filter(c=>c.st==='waiting'),labs=db.labs.filter(x=>x.status!=='reported');
@@ -15,3 +17,5 @@ function Dash({db,go}){
    card('Bed occupancy',['General','ICU','Private'].map(w=>{const l=db.beds.filter(b=>b.w===w),o=l.filter(b=>b.p).length;return h('div',{key:w,style:{marginBottom:12}},h('div',{className:'li'},h('span',null,w),h('span',{className:'mu'},o+'/'+l.length)),h('div',{className:'bar'},h('i',{style:{width:(l.length?o/l.length*100:0)+'%',background:o===l.length?'var(--er)':'var(--ok)'}})))}))),
   card('Recent activity',LG.length?LG.map((x,i)=>h('div',{key:i,className:'li'},h('span',null,x.m),h('span',{className:'mu'},x.t))):h('div',{className:'mu'},'Actions you take will appear here.')));
 }
+
+export { Dash };

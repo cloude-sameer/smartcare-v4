@@ -1,4 +1,6 @@
 /* Illustrations (inline SVG, no external images) + hero banners + blood-module help section */
+import { h, BG, CAN, card } from './core.js';
+
 const svg=(s,vb)=>h('svg',{viewBox:vb||'0 0 240 140',className:'art','aria-hidden':true,dangerouslySetInnerHTML:{__html:s}});
 const W='fill="#fff"',WO='fill="#fff" opacity=".35"';
 const ART={
@@ -24,3 +26,5 @@ function BloodHelp(){return h('div',null,
  card('Help & NGO partners',h('div',{className:'ngos'},NGO.map(n=>h('a',{className:'ngo',key:n[0],href:n[2],target:'_blank',rel:'noopener'},svg(n[3],'0 0 56 56'),h('div',null,h('b',null,n[0]),h('span',{className:'mu'},n[1]),h('em',null,'Visit website ↗'))))),h('div',{className:'mu',style:{marginTop:10}},'Links open official websites. Confirm local contact details before relying on them in an emergency.')),
  card('How donation works',h('div',{className:'steps'},STEPS.map((s,i)=>h('div',{className:'step',key:i},h('i',null,s[0]),h('b',null,(i+1)+'. '+s[1]),h('span',{className:'mu'},s[2])))),h('div',{className:'chips'},['Age 18–65','Weight ≥ 45 kg','Hb ≥ 12.5 g/dL','Gap: ~3 months (men), ~4 months (women)'].map(c=>h('span',{className:'b bl',key:c},c))),h('div',{className:'mu',style:{marginTop:8}},'General guidance only — the blood bank doctor makes the final eligibility call.')),
  card('Who can receive from whom',h('div',{className:'compat'},BG.map(g=>h('div',{key:g},h('b',null,g),h('span',{className:'mu'},'can receive'),h('div',null,CAN[g].map(x=>h('span',{className:'b '+(x===g?'g':''),key:x},x))))))));}
+
+export { Hero, BloodHelp };
